@@ -1,0 +1,15 @@
+---
+# defaults file for ether-channel
+ether_channel_config:
+  - group_name: PortChannel13
+    member_interfaces:
+      - member: GigabitEthernet1/0/1
+        mode: active
+      - member: GigabitEthernet1/0/2
+        mode: active
+  - group_name: PortChannel23
+    member_interfaces:
+      - member: GigabitEthernet1/0/3
+        mode: active
+      - member: GigabitEthernet1/0/4
+        mode: active

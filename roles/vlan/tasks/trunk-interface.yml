@@ -1,0 +1,21 @@
+---
+- block:
+    - name: Set interface descriptions
+      cisco.ios.ios_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            description: "{{ item.description }}"
+        state: rendered
+      with_items: "{{ trunking_config }}"
+      when: trunking_config is defined
+
+    - name: Configure trunk interfaces
+      cisco.ios.ios_l2_interfaces:
+        config:
+          - name: "{{ item.name }}"
+            trunk:
+              allowed_vlans: "{{ item.trunk.allowed_vlan }}"
+              mode: "{{ mode }}"
+        state: rendered
+        with_items: "{{ trunking_config }}"
+        when: trunking_config is defined

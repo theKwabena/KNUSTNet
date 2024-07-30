@@ -1,0 +1,14 @@
+---
+# defaults file for vlan
+vlan_config:
+  - id: 1016
+    name: DOM2-INET-DC-A
+
+trunking_config:
+  - name: 11
+    description: NGFW A LINK
+    trunk:
+      allowed_vlan:
+        - 1016
+        - 1032
+        - 1048

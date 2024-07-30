@@ -1,0 +1,8 @@
+---
+- block:
+    - name: Set interface description
+      cisco.ios.ios_interface:
+        name: "{{ interface_name }}"
+        description: "{{ interface_description }}"
+
+    - name:

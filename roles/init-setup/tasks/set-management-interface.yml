@@ -1,0 +1,7 @@
+---
+- name: Set Management Interface
+  cisco.ios.ios_l3_interface:
+    config:
+      - name: "{{ management_interface }}"
+        ipv4:
+          - address: "{{ ipv4_address }}"

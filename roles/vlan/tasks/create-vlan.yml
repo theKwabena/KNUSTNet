@@ -1,0 +1,9 @@
+---
+- name: Create VLANs
+  cisco_ios.ios_vlans:
+    config:
+      name: "{{ item.name }}"
+      vlan_id: "{{ item.id }}"
+    state: rendered
+  with_items: "{{ vlan_config }}"
+  when: vlan_config is defined

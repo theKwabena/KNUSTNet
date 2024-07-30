@@ -1,0 +1,4 @@
+---
+- import_tasks: create-vlan.yml
+
+- import_tasks: trunk-interface.yml

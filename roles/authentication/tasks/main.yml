@@ -1,0 +1,6 @@
+---
+# tasks file for authentication
+- name: Generate RSA key pairs for SSH
+  cisco_ios.ios_config:
+    lines:
+      -

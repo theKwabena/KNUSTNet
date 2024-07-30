@@ -1,0 +1,4 @@
+vrf_name: Mgmt-intf
+next_hop: 10.253.7.254
+network_address: 10.10.0.0/23
+

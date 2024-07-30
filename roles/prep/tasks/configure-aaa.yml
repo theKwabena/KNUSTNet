@@ -1,0 +1,22 @@
+---
+- block:
+    - name: Enable AAA features
+      cisco.ios.ios_config:
+        lines:
+          - aaa {{ aaa_model }}
+
+    - name: Configure AAA default login local
+      cisco.ios.ios_config:
+        lines:
+          - aaa authentication login default {{ authentication_mode }}
+
+    - name: Allow exec mode for successful login
+      cisco.ios.ios_config:
+        lines:
+          - aaa authentication enable default {{ exec_mode }}
+
+    - name: Require username for logins
+      cisco.ios.ios_config:
+        lines:
+          - aaa authentication suppress null-username
+

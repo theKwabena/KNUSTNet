@@ -1,0 +1,3 @@
+hostname: core-router-B
+ipv4_address: 10.253.6.81/23
+management_interface: gigabitEthernet 0

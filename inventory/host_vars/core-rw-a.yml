@@ -1,0 +1,18 @@
+hostname: core-router-A
+ipv4_address: 10.253.6.81/23
+management_interface: gigabitEthernet 0
+ether_channel_config:
+  - name: 13
+    members:
+      - member: GigabitEthernet1/0/1
+        mode: active
+      - member: GigabitEthernet1/0/2
+        mode: active
+  - name: 14
+    members:
+      - member: GigabitEthernet1/0/3
+        mode: active
+      - member: GigabitEthernet1/0/4
+        mode: active
+
+

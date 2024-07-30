@@ -1,0 +1,29 @@
+hostname: public-failover-sw-A
+ipv4_address: 10.253.6.91/23
+management_interface: gigabitEthernet 0/0
+
+vlan_config:
+  - id: 1016
+    name: DOM2-INET-DC-A
+
+trunking_config:
+  - name: 11
+    description: NGFW A LINK
+    trunk:
+      allowed_vlan:
+        - 1016
+        - 1032
+        - 1048
+  - name: 12
+    description: NGFW B LINK
+    trunk:
+      allowed_vlan:
+        - 1016
+        - 1032
+        - 1048
+  - name: 13
+    description: ROUTER A LINK
+    trunk:
+      allowed_vlan:
+        - 160
+

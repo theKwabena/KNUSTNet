@@ -1,0 +1,4 @@
+---
+- name: Set Device Host Name
+  cisco.ios_system:
+    hostname: "{{ hostname }}"

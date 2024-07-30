@@ -1,0 +1,12 @@
+
+# DNS variables
+domain_name: knust.edu.gh
+lookup_interface: loopback 101
+domain_loop_up_mode: recursive
+nameservers:
+  - 8.8.8.8
+  - 8.8.4.4
+
+# AAA
+exec_mode: none
+authentication_mode: local

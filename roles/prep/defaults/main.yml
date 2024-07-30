@@ -1,0 +1,9 @@
+---
+# defaults file for prep
+interface: gigabitEthernet 0
+base_ip: 10.253.6
+base_hostname: co
+look_up_interface: loopback 101
+nameserver:
+  - 8.8.8.8
+  - 8.8.4.4

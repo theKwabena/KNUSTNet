@@ -1,0 +1,19 @@
+- block:
+  - name: Set Device DNS Domain
+    cisco.ios.ios_system:
+      domain_name: "{{ dns_domain_name }}"
+
+  - name: Enable DNS lookup and set sources
+    cisco.ios.ios_system:
+      lookup_source: "{{ lookup_interface }}"
+      lookup_enabled: true
+
+  - name: Enable DNS lookups for URLs
+    cisco.ios_config:
+      lines:
+        - ip domain lookup {{ recursive }}
+
+  - name: Set DNS server for DNS lookups
+    cisco_ios.ios_system:
+      nameservers: "{{ nameservers }}"
+

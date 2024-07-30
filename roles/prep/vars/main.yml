@@ -1,0 +1,10 @@
+---
+# vars file for prep
+dns:
+  domain: knust.edu.gh
+  lookup: reverse
+  loopback_interface: 101
+  dns_server:
+    - 8.8.8.8
+    - 8.8.4.4
+

@@ -1,2 +1,8 @@
 ---
 # defaults file for stp
+vlan_config:
+  - id: 1016
+    name: DOM2-INET-DC-A
+stp_priority: 0
+forward_time:
+stp_mode: rapid-pvst

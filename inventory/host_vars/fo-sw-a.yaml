@@ -3,8 +3,11 @@ ipv4_address: 10.253.6.91/23
 management_interface: gigabitEthernet 0/0
 
 vlan_config:
-  - id: 1016
-    name: DOM2-INET-DC-A
+  vlan:
+    - id: 1016
+      name: DOM2-INET-DC-A
+
+stp_priority:
 
 trunking_config:
   - name: 11

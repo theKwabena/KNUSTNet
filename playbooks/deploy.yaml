@@ -36,3 +36,22 @@
     - ether-channel
 
 
+- name: Create fail over switch vlan
+  hosts: fail-over-switch
+  roles:
+    - vlan
+
+- name: Apply stp configurations
+  hosts: fail-over-switch
+  roles:
+    - stp
+
+- name: Configure ip address for hosts
+  hosts:
+    - fail-over-switch
+    - core-router
+
+  roles:
+    - interface
+
+

@@ -1,2 +1,7 @@
 ---
 # tasks file for stp
+- include_tasks: apply-mst-stp.yml
+  when: stp_mode == 'mstp'
+
+- include_tasks: apply-rpvst-stp.yml
+  when: stp_mode == "rapid-pvst"

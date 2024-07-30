@@ -1,2 +1,14 @@
 ---
 # defaults file for interface
+interfaces:
+  - name: port-channel 13.160
+    description: Public Switch A Link
+    encapsulation: dot1q 160
+    ipv4_address: 129.122.63.161
+    subnet_mask: 255.255.255.248
+
+  - name: port-channel 23.168
+    description: Public Switch B Link
+    encapsulation: dot1q 168
+    ipv4_address: 129.122.63.169
+    subnet_mask: 255.255.255.248

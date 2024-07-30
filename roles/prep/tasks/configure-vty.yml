@@ -1,8 +1,9 @@
 ---
-- name: Configure VTY lines
+- name: Configure VTY
   cisco.ios.ios_config:
-    lines:
-      - line vty 0 4
-      - no password
-      - login authentication {{ authentication_mode }}
-      - transport input ssh
+    src: templates/vty-config.j2
+#    lines:
+#      - line vty 0 4
+#      - no password
+#      - login authentication {{ authentication_mode }}
+#      - transport input ssh

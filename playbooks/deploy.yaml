@@ -1,0 +1,38 @@
+---
+- name: Configure all cisco devices
+  hosts: cisco
+  tasks:
+    - block:
+      - include_role:
+          name: prep
+          tasks_from: set-dns-server
+
+      - include_role:
+          name: prep
+          tasks_from: configure-aaa
+
+      - include_role:
+          name: prep
+          tasks_from: configure-vty
+
+- name: Setup core routers
+  hosts: core-router
+  roles:
+    - init-setup
+
+- name: Setup fail over switches
+  hosts: fail-over-switch
+  roles:
+    - init-setup
+
+- name: Create core router ether channel
+  hosts: core-router
+  roles:
+    - ether-channel
+
+- name: Create fail over switch ether channel
+  hosts: fail-over-switch
+  roles:
+    - ether-channel
+
+

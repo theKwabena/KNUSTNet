@@ -3,7 +3,9 @@
 - name: Create ether channel {{ group_name }}
   cisco.ios.ios_lag_interfaces:
     config:
-      - name: "{{ item.group_name }}"
-        members: "{{ item.members }}"
+      - name: "{{ channel.group_name }}"
+        members: "{{ channel.members }}"
   with_items: "{{ ether_channel_config }}"
+  loop_control:
+    loop_var: channel
   when: ether_channel_config is defined

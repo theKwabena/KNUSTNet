@@ -3,5 +3,5 @@
   cisco.ios.ios_static_route:
     config:
       - vrf: "{{ vrf_name }}"
-        prefix: "{{ network_address | 10.10.0.0/23}}"
+        prefix: "{{ network_address | 10.10.0.0/23 }}"
         next_hop: "{{ next_hop | 10.253.7.254 }}"

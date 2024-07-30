@@ -1,0 +1,6 @@
+spanning-tree mode rapid-pvst
+
+{% for vlan in vlan_config %}
+spanning-tree vlan {{ vlan.id }} priority {{ stp_priority }}
+spanning-tree vlan {{ vlan.id }} forward-time {{ forward_time }}
+{% endfor %}

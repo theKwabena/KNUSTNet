@@ -1,0 +1,5 @@
+---
+- name: Apply STP configuration
+  cisco.ios_ios_config:
+    src: templates/stp.j2
+

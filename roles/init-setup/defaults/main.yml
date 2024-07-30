@@ -1,0 +1,6 @@
+---
+# defaults file for core-router
+
+hostname:
+interface:
+ipv4_address:

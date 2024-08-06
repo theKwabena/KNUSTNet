@@ -1,6 +1,12 @@
-hostname: public-failover-sw-B
+device_hostname: public-failover-sw-B
 ipv4_address: 10.253.6.92/23
 management_interface: gigabitEthernet 0/0
+
+management_vrf:
+  name: Mgmt-intf
+  network: 10.10.0.0
+  subnet: 255.255.254.0
+  gateway: 10.253.7.254
 
 vlan_config:
   - id: 1016
@@ -10,6 +16,7 @@ trunking_config:
   - name: 21
     description: NGFW A LINK
     trunk:
+      encapsulation: dot1q
       allowed_vlan:
         - 1024
         - 1040
@@ -18,6 +25,7 @@ trunking_config:
   - name: 22
     description: NGFW B LINK
     trunk:
+      encapsulation: dot1q
       allowed_vlan:
         - 1024
         - 1040
@@ -26,7 +34,6 @@ trunking_config:
   - name: 13
     description: ROUTER A LINK
     trunk:
+      encapsulation: dot1q
       allowed_vlan:
         - 160
-
-

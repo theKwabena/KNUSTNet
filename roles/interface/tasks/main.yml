@@ -1,11 +1,11 @@
 ---
 # tasks file for interface
 - name: Configure Port-Channel interface
-  cisco.ios.ios_interface:
-    name: Port-Channel160
-    description: Public Switch A Link
-    encapsulation: dot1q 160
-    ip_address: 129.122.63.161
-    subnet_mask: 255.255.255.248
+  cisco.ios.ios_interfaces:
+    config:
+    - name: Port-Channel160
+      description: Public Switch A Link
+      encapsulation: dot1q 160
+      ip_address: 129.122.63.161
+      subnet_mask: 255.255.255.248
     state: present
-  delegate_to: localhost

@@ -1,0 +1,68 @@
+---
+- name: Configure all cisco devices
+  hosts: cisco
+  gather_facts: false
+  tasks:
+    - block:
+      - include_role:
+          name: prep
+          tasks_from: set-dns-server
+
+      - include_role:
+          name: prep
+          tasks_from: configure-aaa
+
+      - include_role:
+          name: prep
+          tasks_from: configure-vty
+
+- name: Setup core routers
+  gather_facts: false
+  hosts: cisco
+  roles:
+    - role: init-setup
+      tags: ['init-core-router']
+    
+
+- name: Setup fail over switches
+  hosts: fail-over-switch
+  roles:
+    - init-setup
+
+- name: Create core router ether channel
+  gather_facts: false
+  hosts: core-router
+  roles:
+    - ether-channel
+
+- name: Create fail over switch ether channel
+  gather_facts: false
+  hosts: fail-over-switch
+  roles:
+    - ether-channel
+
+
+- name: Create fail over switch vlan
+  gather_facts: false
+  hosts: fail-over-switch
+  roles:
+    - role: vlan
+      tags: ['init-core-router']
+
+
+- name: Apply stp configurations
+  gather_facts: false
+  hosts: fail-over-switch
+  roles:
+    - stp
+
+- name: Configure ip address for hosts
+  gather_facts: false
+  hosts:
+    - fail-over-switch
+    - core-router
+
+  roles:
+    - interface
+
+

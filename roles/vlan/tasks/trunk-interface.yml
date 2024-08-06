@@ -15,7 +15,7 @@
           - name: "{{ item.name }}"
             trunk:
               allowed_vlans: "{{ item.trunk.allowed_vlan }}"
-              mode: "{{ mode }}"
+              encapsulation: "{{ item.trunk.encapsulation }}"
         state: rendered
-        with_items: "{{ trunking_config }}"
-        when: trunking_config is defined
+      with_items: "{{ trunking_config }}"
+      when: trunking_config is defined

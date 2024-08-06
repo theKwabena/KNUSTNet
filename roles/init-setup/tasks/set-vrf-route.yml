@@ -1,7 +1,59 @@
----
-- name: Set Management VRF route
-  cisco.ios.ios_static_route:
-    config:
-      - vrf: "{{ vrf_name }}"
-        prefix: "{{ network_address | 10.10.0.0/23 }}"
-        next_hop: "{{ next_hop | 10.253.7.254 }}"
+- block:
+    - name: Create Management VRF
+      cisco.ios.ios_vrf:
+        name: "{{ management_vrf.name | default('Mgmt-intf') }}"
+        state: present
+      register: vrf_output
+
+    - name: Debug VRF Creation
+      debug:
+        var: vrf_output.stdout
+    
+    - name: Configure management vrt route
+      cisco.ios.ios_config:
+        lines:
+          - ip route vrf {{ management_vrf.name }} {{ management_vrf.network }} {{ management_vrf.subnet }} {{ management_vrf.gateway }}
+        match: none
+        save_when: changed
+
+
+
+
+    # - name: Configure management VRF route
+    #   cisco.ios.ios_static_route:
+    #     routes:
+    #       - network: 0.0.0.0
+    #         mask: 0.0.0.0
+    #         next_hop: <next-hop-ip>
+    #         vrf: management
+    #     state: present 
+  # cisco.ios.ios_static_routes:
+  #   config:
+  #     - vrf: "{{ vrf_name | default('Mgmt-intf') }}"
+  #       address_families:
+  #         - afi: ipv4
+  #           routes:
+  #             - dest: "{{ network_address | default('172.16.0.0/23') }}" # 192.0.2.0/24
+  #               next_hops:
+  #                 - forward_router_address: "{{ next_hop | default('172.16.0.254') }}" # 192.0.2.1
+  #   state: merged
+          
+        # prefix: "{{ network_address | default('172.16.0.0/23') }}"
+        # next_hop: "{{ next_hop | default('172.16.0.254') }}"
+
+
+# ---
+# - name: Set Management VRF route
+#   cisco.ios.ios_static_routes:
+#     config:
+#       - vrf: "{{ vrf_name | default('Mgmt-intf') }}"
+#         address_families:
+#           - afi: ipv4
+#             routes:
+#               - dest: "{{ network_address | default('172.16.0.0/23') }}" # 192.0.2.0/24
+#                 next_hops:
+#                   - forward_router_address: "{{ next_hop | default('172.16.0.254') }}" # 192.0.2.1
+#     state: overridden
+          
+#         # prefix: "{{ network_address | default('172.16.0.0/23') }}"
+#         # next_hop: "{{ next_hop | default('172.16.0.254') }}"

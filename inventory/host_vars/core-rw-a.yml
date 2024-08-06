@@ -1,5 +1,10 @@
-hostname: core-router-A
+device_hostname: core-router-A
 ipv4_address: 10.253.6.81/23
+management_vrf:
+  name: Mgmt-intf
+  network: 10.10.0.0
+  subnet: 255.255.254.0
+  gateway: 10.253.7.254
 management_interface: gigabitEthernet 0
 ether_channel_config:
   - name: 13

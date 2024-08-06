@@ -1,0 +1,14 @@
+---
+- name: Configure Cisco Switches
+  hosts: cisco
+  gather_facts: false
+
+  tasks:
+  
+  - name: Configure hostname and domain name
+    cisco.ios.ios_system:
+      hostname: "{{ device_hostname }}"
+      domain_name: knust.edu.gh
+   
+  
+  

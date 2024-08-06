@@ -2,6 +2,6 @@
 # tasks file for core-router
 - import_tasks: set-hostname.yml
 
-- import_tasks: set-management-interface.yml
+# - import_tasks: set-management-interface.yml
 
-- import_tasks: set-vrf-route.yml
+# - import_tasks: set-vrf-route.yml

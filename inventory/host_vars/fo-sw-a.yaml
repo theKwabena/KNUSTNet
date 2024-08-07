@@ -1,5 +1,5 @@
-device_hostname: public-failover-sw-B
-ipv4_address: 10.253.6.92/23
+device_hostname: public-failover-sw-a
+ipv4_address: 10.253.6.91/23
 management_interface: gigabitEthernet 0/0
 
 vlan_config:

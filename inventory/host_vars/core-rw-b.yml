@@ -1,5 +1,5 @@
 device_hostname: core-router-B
-ipv4_address: 10.253.6.81/23
+ipv4_address: 10.253.6.82/23
 management_interface: gigabitEthernet 0
 management_vrf:
   name: Mgmt-intf
